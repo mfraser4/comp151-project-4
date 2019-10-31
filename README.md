@@ -9,7 +9,6 @@ m_fraser3@u.pacific.edu
 1. [COMP 151 Project 4](#comp-151-project-4)
 2. [Table of Contents](#table-of-contents)
 3. [Usage](#usage)
-    1. [Args](#args)
 4. [Best Testing Output Configuration](#best-testing-output-configuration)
 
 # Usage
