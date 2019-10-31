@@ -10,6 +10,7 @@ m_fraser3@u.pacific.edu
 2. [Table of Contents](#table-of-contents)
 3. [Usage](#usage)
     1. [Args](#args)
+4. [Best Testing Output Configuration](#best-testing-output-configuration)
 
 # Usage
 
