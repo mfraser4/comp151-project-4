@@ -76,21 +76,21 @@ An example of resulting output (since the weights are randomly generated) is:
 ```
 Aggregate Testing Results:
 --------------------------
-    Percentage Correct: 0.3733
-    Percentage Multiple Firing: 0.16
-    Percentage No Firing: 0.3533
+    Percentage Correct:         0.39
+    Percentage Multiple Firing: 0.1333
+    Percentage No Firing:       0.4167
 
 
 Per-Neuron Testing Results:
 ---------------------------
            Correct   False Pos.  False Neg.
       Red: 0.95      0.01        0.04
-     Blue: 0.91      0.0067      0.0833
-   Yellow: 0.96      0.03        0.01
-    Green: 0.91      0.03        0.06
-   Purple: 0.7667    0.19        0.0433
+     Blue: 0.92      0.0167      0.0633
+   Yellow: 0.97      0.0167      0.0133
+    Green: 0.9233    0.01        0.0667
+   Purple: 0.7967    0.14        0.0633
    Orange: 0.9767    0.0         0.0233
-    Brown: 0.9233    0.0067      0.07
+    Brown: 0.93      0.0         0.07
      Pink: 0.91      0.0         0.09
      Gray: 0.9533    0.0         0.0467
 ```

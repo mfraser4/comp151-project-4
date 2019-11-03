@@ -57,6 +57,7 @@ class ColorClassifier(object):
         self.eta = eta # learning rate
         self.epochs = epochs # number of iterations
 
+    # loads and stores weights from provided weights file
     def load_weights(self, file):
         f = open(file, 'r')
         if f is None:
@@ -66,6 +67,8 @@ class ColorClassifier(object):
             l = l.strip() # trim whitespace
             self.w[i] = array(split('\s+', l))
 
+    # tests stored weights against data in provided data file + prints final
+    # statistics to console
     def test(self, file):
         # statistics variables
         num_correct = 0 # number of correct classifications
@@ -104,6 +107,7 @@ class ColorClassifier(object):
         self._print_statistics(m, num_correct, num_mulfire, num_nofire,
                                                             neuron_stats)
 
+    # trains stored weights on data points in provided file
     def train(self, file):
         x, y = self._parse_data(file) # get data and classifications
         m, _ = x.shape # extract number of points
@@ -121,6 +125,7 @@ class ColorClassifier(object):
                 for j in range(n):
                     self.w[j] = self.w[j] + (self.eta * (o[j]-c[j]) * x[i])
 
+    # writes contents of stored weights to provided file
     def write(self, file):
         f = open(file, 'w')
         if f is None:
@@ -136,6 +141,8 @@ class ColorClassifier(object):
             f.write(s)
         f.close()
 
+    # classifies provided set of points (assumes sigmoid function has been
+    # applied)
     def _classify(self, outputs):
         n = len(outputs)
         c = zeros(n)
@@ -144,6 +151,7 @@ class ColorClassifier(object):
                 c[i] = 1
         return c
 
+    # performs forward propagation and sigmoid on result
     def _forward_propagation(self, x):
         r = x.dot(transpose(self.w))
         # apply Sigmoid function
@@ -151,6 +159,7 @@ class ColorClassifier(object):
             r[i] = 1 / (1 +  exp(-r[i]))
         return r
 
+    # returns tuple of point values and classifications obtained from data file
     def _parse_data(self, file):
         # prepare file contents
         f = open(file, 'r')
@@ -180,13 +189,17 @@ class ColorClassifier(object):
         y[int(c)] = 1
         return y
 
+    # print provided statistics to console
     def _print_statistics(self, m, num_correct, num_mulfire, num_nofire,
                                                                 neuron_stats):
         print('Aggregate Testing Results:')
         print('--------------------------')
-        print('    Percentage Correct: ' + str(round(num_correct/m, 4)))
-        print('    Percentage Multiple Firing: ' + str(round(num_mulfire/m, 4)))
-        print('    Percentage No Firing: ' + str(round(num_nofire/m, 4)))
+        print('    Percentage Correct: '.ljust(32)
+                                                + str(round(num_correct/m, 4)))
+        print('    Percentage Multiple Firing: '.ljust(32)
+                                                + str(round(num_mulfire/m, 4)))
+        print('    Percentage No Firing: '.ljust(32)
+                                                + str(round(num_nofire/m, 4)))
         print('\n')
 
         print('Per-Neuron Testing Results:')
